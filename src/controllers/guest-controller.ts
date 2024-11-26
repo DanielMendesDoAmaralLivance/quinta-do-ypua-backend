@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { GuestService } from '../services/guest-service';
 import Guest from 'src/entities/guest';
 
@@ -14,5 +22,15 @@ export class GuestController {
   @Post()
   async insert(@Body() guestDto: Guest) {
     return await this.service.insert(guestDto);
+  }
+
+  @Put(':id')
+  async put(@Param('id') id: string, @Body() guestDto: Guest) {
+    return await this.service.update(Number(id), guestDto);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return await this.service.delete(Number(id));
   }
 }

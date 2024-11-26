@@ -13,4 +13,12 @@ export class GuestService {
   async insert(guest: Guest) {
     return await this.repository.insert(guest);
   }
+
+  async update(id: number, guest: Guest) {
+    return await this.repository.update(id, guest);
+  }
+
+  async delete(id: number) {
+    return await this.repository.delete(id);
+  }
 }
