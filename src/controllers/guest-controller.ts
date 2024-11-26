@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { GuestService } from '../services/guest-service';
+import { GuestService } from 'src/services/guest-service';
 import Guest from 'src/entities/guest';
 
 @Controller('guest')

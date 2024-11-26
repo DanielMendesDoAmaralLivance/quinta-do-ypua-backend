@@ -1,5 +1,5 @@
 import Guest from 'src/entities/guest';
-import db from '../database';
+import db from 'src/database';
 import { updatedAt } from 'src/utils/date';
 
 export class GuestRepository {
