@@ -18,4 +18,8 @@ export class AccommodationService {
 
     return await this.repository.insert(accommodation);
   }
+
+  async update(id: number, accommodation: Accommodation) {
+    return await this.repository.update(id, accommodation);
+  }
 }

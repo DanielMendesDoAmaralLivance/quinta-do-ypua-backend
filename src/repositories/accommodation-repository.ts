@@ -7,6 +7,7 @@ export class AccommodationRepository {
         SELECT * FROM "Accommodation" a
         INNER JOIN "AccommodationImage" ai
         ON a."id" = ai."accommodationId"
+        ORDER BY a.id
     `);
 
     return rows;
@@ -44,5 +45,34 @@ export class AccommodationRepository {
     );
 
     return Number(rows[0].id);
+  }
+
+  async update(id: number, accommodation: Accommodation) {
+    await db.query(
+      `
+        UPDATE "Accommodation" 
+        SET 
+          "name" = $1, 
+          "description" = $2, 
+          "pricePerNight" = $3, 
+          "checkin" = $4, 
+          "checkout" = $5, 
+          "guests" = $6, 
+          "beds" = $7, 
+          "minNights" = $8
+        WHERE "id" = $9
+    `,
+      [
+        accommodation.name,
+        accommodation.description,
+        accommodation.pricePerNight,
+        accommodation.checkin,
+        accommodation.checkout,
+        accommodation.guests,
+        accommodation.beds,
+        accommodation.minNights,
+        id,
+      ],
+    );
   }
 }
