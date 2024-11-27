@@ -28,6 +28,7 @@ CREATE TABLE "AccommodationReservationStatus" (
 	"createdAt" timestamptz NOT NULL DEFAULT now(),
 	"updatedAt" timestamptz NOT NULL DEFAULT now()
 );
+INSERT INTO "AccommodationReservationStatus" ("name") VALUES ('Confirmed', 'Waiting checkin', 'In progress', 'Waiting checkout', 'Cancelled', 'Finished');
 CREATE TABLE "Guest" (
 	"id" serial PRIMARY KEY,
 	"firstName" text NOT NULL,
