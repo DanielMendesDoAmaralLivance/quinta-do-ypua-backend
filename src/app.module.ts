@@ -7,6 +7,7 @@ import { AccommodationController } from './controllers/accommodation-controller'
 import { AccommodationService } from './services/accommodation-service';
 import { AccommodationReservationController } from './controllers/accommodation-reservation-controller';
 import { AccommodationReservationService } from './services/accommodation-reservation-service';
+import { AccommodationImageService } from './services/accommodation-image-service';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AccommodationReservationService } from './services/accommodation-reserv
     GuestService,
     AccommodationService,
     AccommodationReservationService,
+    AccommodationImageService,
   ],
 })
 export class AppModule {}
