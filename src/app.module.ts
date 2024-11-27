@@ -5,6 +5,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AccommodationController } from './controllers/accommodation-controller';
 import { AccommodationService } from './services/accommodation-service';
+import { AccommodationReservationController } from './controllers/accommodation-reservation-controller';
+import { AccommodationReservationService } from './services/accommodation-reservation-service';
 
 @Module({
   imports: [
@@ -13,7 +15,15 @@ import { AccommodationService } from './services/accommodation-service';
       serveRoot: '/uploads',
     }),
   ],
-  controllers: [GuestController, AccommodationController],
-  providers: [GuestService, AccommodationService],
+  controllers: [
+    GuestController,
+    AccommodationController,
+    AccommodationReservationController,
+  ],
+  providers: [
+    GuestService,
+    AccommodationService,
+    AccommodationReservationService,
+  ],
 })
 export class AppModule {}
