@@ -12,7 +12,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { AccommodationService } from 'src/services/accommodation-service';
 import { diskStorage } from 'multer';
 import { Accommodation } from 'src/entities/accommodation';
-import * as path from 'path';
 import AccommodationImage from 'src/entities/accommodation-image';
 import { AccommodationImageService } from 'src/services/accommodation-image-service';
 

@@ -8,6 +8,10 @@ export class AccommodationReservationService {
   private readonly repository: AccommodationReservationRepository =
     new AccommodationReservationRepository();
 
+  async getAll() {
+    return await this.repository.getAll();
+  }
+
   async insert(accommodationReservation: AccommodationReservation) {
     if (!accommodationReservation.accommodationReservationStatusId) {
       accommodationReservation.accommodationReservationStatusId =

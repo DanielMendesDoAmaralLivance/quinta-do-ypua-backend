@@ -2,6 +2,25 @@ import db from 'src/database';
 import AccommodationReservation from 'src/entities/accommodation-reservation';
 
 export class AccommodationReservationRepository {
+  async getAll() {
+    return await db.query(
+      `
+        SELECT 
+          "id",
+          "guests",
+          "predictedStartAt",
+          "predictedEndAt",
+          "totalPrice",
+          "includedLunch",
+          "includedDinner",
+          "accommodationId",
+          "accommodationReservationStatusId",
+          "responsibleGuestId"
+        FROM "AccommodationReservation"
+    `,
+    );
+  }
+
   async insert(accommodationReservation: AccommodationReservation) {
     await db.query(
       `
