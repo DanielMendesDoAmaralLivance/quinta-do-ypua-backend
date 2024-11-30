@@ -1,3 +1,4 @@
+CREATE DATABASE quinta_do_ypua;
 CREATE TABLE "User" (
 	"id" serial PRIMARY KEY,
 	"firstName" text NOT NULL,

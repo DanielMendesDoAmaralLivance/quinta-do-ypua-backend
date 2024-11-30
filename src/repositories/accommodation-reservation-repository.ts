@@ -3,22 +3,27 @@ import AccommodationReservation from 'src/entities/accommodation-reservation';
 
 export class AccommodationReservationRepository {
   async getAll() {
-    return await db.query(
+    const { rows } = await db.query(
       `
         SELECT 
           "id",
           "guests",
           "predictedStartAt",
           "predictedEndAt",
+          "startedAt",
+          "endedAt",
           "totalPrice",
           "includedLunch",
           "includedDinner",
           "accommodationId",
           "accommodationReservationStatusId",
-          "responsibleGuestId"
+          "resposibleGuestId"
         FROM "AccommodationReservation"
+        ORDER BY id DESC
     `,
     );
+
+    return rows;
   }
 
   async insert(accommodationReservation: AccommodationReservation) {
@@ -50,6 +55,44 @@ export class AccommodationReservationRepository {
         accommodationReservation.accommodationReservationStatusId,
         accommodationReservation.responsibleGuestId,
       ],
+    );
+  }
+
+  async checkin(id: number) {
+    await db.query(
+      `
+        UPDATE "AccommodationReservation" 
+        SET 
+          "accommodationReservationStatusId" = 3,
+          "startedAt" = current_timestamp
+        WHERE "id" = $1
+    `,
+      [id],
+    );
+  }
+
+  async checkout(id: number) {
+    await db.query(
+      `
+        UPDATE "AccommodationReservation" 
+        SET 
+          "accommodationReservationStatusId" = 6,
+          "endedAt" = current_timestamp
+        WHERE "id" = $1
+    `,
+      [id],
+    );
+  }
+
+  async cancel(id: number) {
+    await db.query(
+      `
+        UPDATE "AccommodationReservation" 
+        SET 
+          "accommodationReservationStatusId" = 5
+        WHERE "id" = $1
+    `,
+      [id],
     );
   }
 }

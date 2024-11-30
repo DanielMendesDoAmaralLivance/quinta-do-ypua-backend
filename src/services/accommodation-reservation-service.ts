@@ -20,4 +20,16 @@ export class AccommodationReservationService {
 
     return await this.repository.insert(accommodationReservation);
   }
+
+  async checkin(id: number) {
+    return await this.repository.checkin(id);
+  }
+
+  async checkout(id: number) {
+    return await this.repository.checkout(id);
+  }
+
+  async cancel(id: number) {
+    return await this.repository.cancel(id);
+  }
 }
